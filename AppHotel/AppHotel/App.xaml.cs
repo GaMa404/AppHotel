@@ -1,8 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
-using AppHotel.View;
+using System.Threading;
+using System.Globalization;
+
 using AppHotel.Model;
 
 namespace AppHotel
@@ -35,9 +38,18 @@ namespace AppHotel
 
         public App()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Login());
+            if (Properties.ContainsKey("usuario_logado"))
+            {
+                MainPage = new NavigationPage(new View.CadastrarHospedagem());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new View.Login());
+            }
         }
 
         protected override void OnStart()

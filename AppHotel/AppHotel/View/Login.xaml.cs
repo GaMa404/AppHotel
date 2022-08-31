@@ -12,14 +12,15 @@ namespace AppHotel.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        string usuario_correto = "gama";
-        string senha_correta = "123";
+        App PropriedadesApp;
 
         public Login()
         {
             InitializeComponent();
 
             NavigationPage.SetHasNavigationBar(this, false);
+
+            PropriedadesApp = (App)Application.Current;
         }
 
         private async void btn_entrar_Clicked(object sender, EventArgs e)
@@ -27,16 +28,13 @@ namespace AppHotel.View
             string usuario_digitado = user.Text;
             string senha_digitada = pass.Text;
 
+            string usuario_correto = "gama";
+            string senha_correta = "123";
+
             if (usuario_correto == usuario_digitado && senha_correta == senha_digitada)
             {
-                try
-                {
-                    await Navigation.PushAsync(new View.CadastrarHospedagem());
-                }
-                catch (Exception ex)
-                {
-                    await DisplayAlert("Erro", ex.Message, "Ok");
-                }
+                App.Current.Properties.Add("usuario_logado", usuario_digitado);
+                App.Current.MainPage = new CadastrarHospedagem();
             }
             else
             {
