@@ -48,7 +48,7 @@ namespace AppHotel
             }
             else
             {
-                MainPage = new NavigationPage(new View.Login());
+                MainPage = new View.Login();
             }
         }
 

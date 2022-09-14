@@ -34,7 +34,7 @@ namespace AppHotel.View
             if (usuario_correto == usuario_digitado && senha_correta == senha_digitada)
             {
                 App.Current.Properties.Add("usuario_logado", usuario_digitado);
-                App.Current.MainPage = new CadastrarHospedagem();
+                App.Current.MainPage = new NavigationPage(new CadastrarHospedagem());
             }
             else
             {

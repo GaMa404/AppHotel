@@ -17,13 +17,13 @@ namespace AppHotel.Model
                 if (value == null)
                 {
                     throw new Exception("Por favor, selecione sua acomodação");
-
-                    quarto_escolhido = value;
                 }
+                
+                quarto_escolhido = value;
             }
         }
 
-        public int QntAdultos
+        public int QntAdultos 
         {
             get => qnt_adultos;
             set
